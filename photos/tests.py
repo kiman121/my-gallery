@@ -161,3 +161,14 @@ class ImageTestCase(TestCase):
         my_image = Image.objects.get(pk=record_id)
 
         self.assertEqual(my_image.name, "East Africa's Cuisine")
+    
+    def test_delete_method(self):
+        '''
+        Test case that confirms if the delete_image method deletes a image
+        '''
+        self.new_image.save_image()
+        record_id = Image.objects.last().id
+        Image.delete_image(record_id)
+
+        my_images = Image.objects.all()
+        self.assertTrue(len(my_images) == 0)

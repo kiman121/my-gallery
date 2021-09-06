@@ -19,7 +19,7 @@ class Location(models.Model):
         Method that fetches a location based by id
         '''
         return cls.objects.filter(id=location_id).first()
-    
+
     @classmethod
     def get_locations_by_id(cls, location_id):
         '''
@@ -47,7 +47,7 @@ class Location(models.Model):
         Method that returns the string representation for the Location Model
         '''
         return self.name
-        
+
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
@@ -72,7 +72,7 @@ class Category(models.Model):
         Method that fetches a category based by id
         '''
         return cls.objects.filter(id=category_id).first()
-    
+
     @classmethod
     def get_categories_by_id(cls, category_id):
         '''
@@ -104,6 +104,8 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
 class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
@@ -160,8 +162,8 @@ class Image(models.Model):
         '''
         Method that fetches an image/photo (gallery item) by id
         '''
-        photo = cls.objects.get(id=id);
-        
+        photo = cls.objects.get(id=id)
+
         return photo
 
     @classmethod
@@ -170,7 +172,15 @@ class Image(models.Model):
         Method that Updates an image record
         '''
         cls.objects.filter(pk=record_id).update(name=update_value)
-    
+
+    @classmethod
+    def delete_image(cls, image_id):
+        '''
+        Method that deletes an image
+        '''
+        image = cls.get_gallery_item(image_id)
+        image.delete()
+
     def __str__(self):
         '''
         Method that gives the string representation for the Image model
