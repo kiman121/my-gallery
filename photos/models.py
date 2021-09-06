@@ -34,12 +34,20 @@ class Location(models.Model):
         '''
         location = cls.objects.filter(pk=location_id).update(name=update_value)
 
+    @classmethod
+    def delete_location(cls, location_id):
+        '''
+        Method that deletes a location
+        '''
+        location = cls.get_location_by_id(location_id)
+        location.delete()
+
     def __str__(self):
         '''
         Method that returns the string representation for the Location Model
         '''
         return self.name
-
+        
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
@@ -86,11 +94,16 @@ class Category(models.Model):
         '''
         location = cls.objects.filter(pk=record_id).update(name=update_value)
 
+    @classmethod
+    def delete_category(cls, category_id):
+        '''
+        Method that deletes a category
+        '''
+        category = cls.get_category_by_id(category_id)
+        category.delete()
 
     def __str__(self):
         return self.name
-
-
 class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
@@ -99,6 +112,12 @@ class Image(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
+
+    def save_image(self):
+        '''
+        Method that saves the Image object
+        '''
+        self.save()
 
     @classmethod
     def get_gallery(cls):
@@ -145,6 +164,13 @@ class Image(models.Model):
         
         return photo
 
+    @classmethod
+    def update_image(cls, record_id, update_value):
+        '''
+        Method that Updates an image record
+        '''
+        cls.objects.filter(pk=record_id).update(name=update_value)
+    
     def __str__(self):
         '''
         Method that gives the string representation for the Image model
