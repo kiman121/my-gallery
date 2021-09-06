@@ -29,4 +29,18 @@ class LocationTestCase(TestCase):
         my_locations = Location.objects.all()
         self.assertTrue(len(my_locations) > 0)
     
-    
+    def test_get_location_by_id(self):
+        self.new_location.save_location()
+        my_location = Location.get_location_by_id(1)
+        self.assertTrue(len(my_location) > 0)
+
+    def test_update_method(self):
+        '''
+        Test case that confirms if the update_location method updates a location
+        '''
+        self.new_location.save_location()
+        record_id = Location.objects.last().id
+        Location.update_location(record_id, 'Nairobi')
+        my_location = Location.objects.get(pk=record_id)
+
+        self.assertEqual(my_location.name, 'Nairobi')
