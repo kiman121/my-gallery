@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Location
+from .models import Location, Category
 # Create your tests here.
 
 class LocationTestCase(TestCase):
@@ -12,8 +12,8 @@ class LocationTestCase(TestCase):
         '''
         self.new_location = Location(name='Kitale')
     
-    def tearDown(self):
-        Location.objects.all().delete()
+    # def tearDown(self):
+    #     Location.objects.all().delete()
 
     def test_instance(self):
         '''
@@ -44,3 +44,34 @@ class LocationTestCase(TestCase):
         my_location = Location.objects.get(pk=record_id)
 
         self.assertEqual(my_location.name, 'Nairobi')
+    
+    # def test_delete_method(self):
+    #     '''
+    #     Test case that confirms if the delete_location method deletes a location
+    #     '''
+    #     self.new_location.save_location()
+    #     # second_location = Location(name="Mombasa")
+    #     # second_location.save_location()
+
+    #     # record_id = Location.objects.last().id
+    #     Location.delete_location(1)
+
+        # my_locations = Location.objects.all()
+        # self.assertTrue(len(my_locations) == 0)
+class CategoryTestCase(TestCase):
+    '''
+    Test class for the Category module
+    '''
+    def setUp(self):
+        '''
+        Method that creates an instance of the Category class before every test
+        '''
+        self.new_category = Category(name='Travel')
+    
+    # def tearDown(self):
+    #     Location.objects.all().delete()
+    def test_instance(self):
+        '''
+        Test case that checks if the object is being instanciated correctly
+        '''
+        self.assertTrue(isinstance(self.new_category, Category))

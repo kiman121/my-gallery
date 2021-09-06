@@ -18,7 +18,7 @@ class Location(models.Model):
         '''
         Method that fetches a location based by id
         '''
-        return cls.objects.get(id=location_id)
+        return cls.objects.filter(id=location_id)
 
     @classmethod
     def update_location(cls, location_id, update_value):

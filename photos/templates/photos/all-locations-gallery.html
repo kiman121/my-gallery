@@ -21,9 +21,10 @@
                     <div class="image-wrapper">
                       {% for gallery_item in gallery %}
                           {% if location.id == gallery_item.location.id%}
-                              <div>
-                                <img src="{{gallery_item.image.url}}" alt="">
-                              </div>
+                            <div class="image-tile">
+                              <img src="{{gallery_item.image.url}}" alt="">
+                              <span class="image-copy"><i class="fa fa-copy"></i></span>
+                            </div>
                           {% endif %}
                       {% endfor %}
                     </div>

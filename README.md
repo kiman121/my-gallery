@@ -30,9 +30,8 @@ Here is a working live demo : https://zetufeed.herokuapp.com/
     ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
     DISABLE_COLLECTSTATIC=1
     ```
-- Run migrations to update the changes to db: `flask db upgrade`
-- Configure a start.sh file to execute your app
-- Execute you start.sh file from terminal to lauch app
+- Run migrations to update the changes to db: `python3.9 manage.py migrate`
+- Run the development server: `python3.9 manage.py runserver`
 - open this url on your browser "http://127.0.0.1:5000/"
 ## Known Bugs
 
