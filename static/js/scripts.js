@@ -52,7 +52,6 @@ $(document).ready(function () {
     navigator.clipboard.writeText(image_url)
     
     navigator.clipboard.readText().then(url=>{
-      console.log(`copied${url}`)
       $(this).empty().html('copied!');
 
       setTimeout(() => {
