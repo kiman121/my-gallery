@@ -1,0 +1,37 @@
+{% extends 'photos/base.html' %} {% block content %}
+<main>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">All Category Photos</h1>
+          <p class="lead text-muted">Assorted gallery for all categories.</p>
+        </div>
+      </div>
+    </section>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        {% for category in categories%}
+          {% if category.records > 0 %}  
+            <div class="image-row card shadow-sm">   
+                <div class="row ">
+                  <a class="group-link" href="{% url 'gallery_by_category' category.id %}">
+                    <h5>{{category.name}}</h5>
+                  </a>
+                  <div class="image-wrapper">
+                    {% for gallery_item in gallery %}
+                      {% if category.id == gallery_item.category.id%}
+                        <div class="image-tile">
+                          <img src="{{gallery_item.image.url}}" alt="">
+                          <span><i class="fa fa-copy"></i></span>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+        {% endfor%}
+      </div>
+    </div>
+  </main>
+{% endblock %}

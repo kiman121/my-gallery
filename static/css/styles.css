@@ -1,0 +1,94 @@
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background: #fff;
+}
+.photo-category {
+  color: #727272;
+}
+.photo-name {
+  color: #f17d00;
+}
+/*-----------------
+      Modals
+-----------------------*/
+.modal .modal-header {
+  border-bottom: none;
+}
+.modal {
+  text-align: center;
+  padding: 0 !important;
+}
+.modal:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+.custom-modal .modal-body {
+  padding: 30px;
+}
+.custom-modal .modal-content {
+  border: 0;
+  border-radius: 10px;
+}
+.modal-btn > .row > div {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#photo_detail .card-text span {
+  font-weight: 900;
+  color: #f17d00;
+}
+.image-row{
+  margin-bottom: 0.25em;
+}
+.image-row .group-link{
+  margin-left: 0.45em;
+  text-decoration: none;
+  color: #727272;
+}
+.image-row .group-link:hover{
+  color: #f17d00;
+  cursor: pointer;
+}
+.image-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 2px;
+  vertical-align: top;
+}
+.image-wrapper > * {
+  flex-basis: 50%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 0.35em;
+}
+.image-wrapper img {
+  width: 100%;
+  border-radius: 0.25em;
+}
+.image-tile{
+  position: relative;
+}
+.image-tile span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
