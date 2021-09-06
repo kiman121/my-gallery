@@ -14,3 +14,9 @@ class LocationTestCase(TestCase):
     
     def tearDown(self):
         Location.objects.all().delete()
+
+    def test_instance(self):
+        '''
+        Test case that checks if the object is being instanciated correctly
+        '''
+        self.assertTrue(isinstance(self.new_location, Location))
