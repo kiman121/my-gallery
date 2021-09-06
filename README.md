@@ -8,7 +8,7 @@ This a nifty application created to serve as a platform where interested users a
 Further to the above usage, this master piece was created as practice on concepts learnt in Python Django (at Moringa School).
 ## Demo
 
-Here is a working live demo : https://zetufeed.herokuapp.com/
+Here is a working live demo : https://ourphotogallery.herokuapp.com/
 ## Setup/Installaction Requirements
 - Clone the repository (repo).
     ```
