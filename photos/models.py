@@ -18,6 +18,13 @@ class Location(models.Model):
         '''
         Method that fetches a location based by id
         '''
+        return cls.objects.filter(id=location_id).first()
+    
+    @classmethod
+    def get_locations_by_id(cls, location_id):
+        '''
+        Method that fetches a location based by id
+        '''
         return cls.objects.filter(id=location_id)
 
     @classmethod
@@ -37,8 +44,17 @@ class Location(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=30)
 
+    def save_category(self):
+        '''
+        Method that saves the Category object
+        '''
+        self.save()
+
     @classmethod
     def get_categories(cls):
+        '''
+        Method that get all categories
+        '''
         categories = cls.objects.all()
         return categories
 
@@ -47,11 +63,29 @@ class Category(models.Model):
         '''
         Method that fetches a category based by id
         '''
-        return cls.objects.get(id=category_id)
+        return cls.objects.filter(id=category_id).first()
+    
+    @classmethod
+    def get_categories_by_id(cls, category_id):
+        '''
+        Method that fetches a category based by id
+        '''
+        return cls.objects.filter(id=category_id)
 
     @classmethod
     def search_category(cls, search_term):
+        '''
+        Method that retrieves a category by provided search term
+        '''
         return cls.objects.get(name__icontains=search_term)
+
+    @classmethod
+    def update_category(cls, record_id, update_value):
+        '''
+        Method that Updates a location
+        '''
+        location = cls.objects.filter(pk=record_id).update(name=update_value)
+
 
     def __str__(self):
         return self.name

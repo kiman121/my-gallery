@@ -31,7 +31,7 @@ class LocationTestCase(TestCase):
     
     def test_get_location_by_id(self):
         self.new_location.save_location()
-        my_location = Location.get_location_by_id(1)
+        my_location = Location.get_locations_by_id(1)
         self.assertTrue(len(my_location) > 0)
 
     def test_update_method(self):
@@ -68,10 +68,33 @@ class CategoryTestCase(TestCase):
         '''
         self.new_category = Category(name='Travel')
     
-    # def tearDown(self):
-    #     Location.objects.all().delete()
     def test_instance(self):
         '''
         Test case that checks if the object is being instanciated correctly
         '''
         self.assertTrue(isinstance(self.new_category, Category))
+    
+    def test_save_method(self):
+        '''
+        Test case that confirms that the Category object is being saved
+        '''
+        self.new_category.save_category()
+        my_categories = Category.get_categories()
+        self.assertTrue(len(my_categories) > 0)
+
+    def test_get_category_by_id(self):
+        self.new_category.save_category()
+        my_category = Category.get_categories_by_id(1)
+        self.assertTrue(len(my_category) > 0)
+
+    def test_update_method(self):
+        '''
+        Test case that confirms if the update_category method updates a category
+        '''
+        self.new_category.save_category()
+        record_id = Category.objects.last().id
+        Category.update_category(record_id, 'Food')
+        my_category = Category.objects.get(pk=record_id)
+
+        self.assertEqual(my_category.name, 'Food')
+    
